@@ -1,14 +1,14 @@
-
+console.log(process.argv); 
 //=================================================TWITTER================================================================  
-function my-tweets(){
+/*function myTweets(){
   var Twitter = require('twitter');
   var keys = require('./keys.js');
    
   var client = new Twitter({
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+    consumer_key: keys.twitterKeys.consumer_key,
+    consumer_secret: keys.twitterKeys.consumer_secret,
+    access_token_key: keys.twitterKeys.access_token_key,
+    access_token_secret: keys.twitterKeys.access_token_secret
   });
      
   var params = {screen_name: 'yana_y908'};
@@ -19,8 +19,10 @@ function my-tweets(){
   });
   }
 
+  myTweets();
+
 //=================================================SPOTIFY================================================================ 
-function spotify-this-song(){
+function spotifyThisSong(){
   var spotify = require('spotify');
    
   spotify.search({ type: 'track', query: 'dancing in the moonlight' }, function(err, data) {
@@ -29,12 +31,18 @@ function spotify-this-song(){
           return;
       }
    
+   console.log(data);
       // Do something with 'data' 
   });
 }
 
+spotifyThisSong();
+*/
+
 //===============================================DO WHAT IT SAYS========================================================== 
-function do-what-it-says(){
+
+
+/*function doWhatItSays(){
   var request = require('request');
   request('http://www.google.com', function (error, response, body) {
   if (!error && response.statusCode == 200) {
@@ -43,3 +51,6 @@ function do-what-it-says(){
 })
 
 }
+
+doWhatItSays();
+*/
