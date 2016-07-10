@@ -1,6 +1,6 @@
 console.log(process.argv); 
 //=================================================TWITTER================================================================  
-/*function myTweets(){
+function myTweets(){
   var Twitter = require('twitter');
   var keys = require('./keys.js');
    
@@ -14,7 +14,10 @@ console.log(process.argv);
   var params = {screen_name: 'yana_y908'};
   client.get('statuses/user_timeline', params, function(error, tweets, response){
     if (!error) {
-      console.log(tweets);
+      for (var i=0; i<tweets.length && i < 5; i++) {
+          console.log("----------------------------------");
+          console.log(tweets[i].text);
+        }console.log("-----------------------------------");
     }
   });
   }
@@ -22,14 +25,14 @@ console.log(process.argv);
   myTweets();
 
 //=================================================SPOTIFY================================================================ 
-function spotifyThisSong(){
+/*function spotifyThisSong(){
   var spotify = require('spotify');
    
-  spotify.search({ type: 'track', query: 'dancing in the moonlight' }, function(err, data) {
+  spotify.search({ type: 'track', query: 'I Want it That Way' }, function(err, data) {
       if ( err ) {
           console.log('Error occurred: ' + err);
           return;
-      }
+      }j
    
    console.log(data);
       // Do something with 'data' 
@@ -53,4 +56,5 @@ spotifyThisSong();
 }
 
 doWhatItSays();
+
 */
