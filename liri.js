@@ -1,6 +1,4 @@
 
-
-
 //==============================================Liri Bot==============================================
 var inquirer = require('inquirer');
 
@@ -21,10 +19,31 @@ inquirer.prompt([
   }
 
   else if (user.selection == "A Song"){
-      spotifyThisSong();
+
+    inquirer.prompt([
+
+        {
+          type: "input",
+          name: "songName",
+          message: "What song?",
+        }
+
+      ]).then(function(user) {
+
+        console.log("----------------------------------");
+        console.log("Here is some info about " + user.songName + "!");
+        console.log("----------------------------------");
+
+      
+        //console.log(songTitle);
+        spotifyThisSong(user.songName);
+
+      });
+
+
   }
 
-  else{
+  else {
       console.log(":D I don't know what I'm doing.");
   }
 
@@ -60,10 +79,13 @@ function myTweets(){
 
 
 //=================================================SPOTIFY================================================================ 
-function spotifyThisSong(){
+function spotifyThisSong(songTitle){
+
+  //console.log(songTitle);
+
   var spotify = require('spotify');
    
-  spotify.search({ type: 'track', query: 'I Want it That Way' }, function(err, data) {
+  spotify.search({ type: 'track', query: songTitle }, function(err, data) {
       if ( err ) {
           console.log('Error occurred: ' + err);
           return;
