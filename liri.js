@@ -1,5 +1,37 @@
-console.log(process.argv); 
-//=================================================TWITTER================================================================  
+console.log(process.argv);
+
+
+//==============================================Liri Bot==============================================
+var inquirer = require('inquirer');
+
+// Created a series of questions 
+inquirer.prompt([
+
+  {
+    type: "list",
+    name: "selection",
+    message: "Hiya! I'm LiriBot. What do you want to see?",
+    choices: ["My Tweets", "Info of a Song", "Something Else", ] 
+  }
+
+]).then(function(user) {
+
+  if (user.selection == "My Tweets"){
+       myTweets();
+  }
+
+  else{
+        console.log("this works 2222");
+  }
+
+
+});
+
+
+
+
+
+//=================================================TWITTER==============================================  
 function myTweets(){
   var Twitter = require('twitter');
   var keys = require('./keys.js');
@@ -22,7 +54,6 @@ function myTweets(){
   });
   }
 
-  myTweets();
 
 //=================================================SPOTIFY================================================================ 
 /*function spotifyThisSong(){
