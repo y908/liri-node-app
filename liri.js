@@ -1,4 +1,4 @@
-console.log(process.argv);
+
 
 
 //==============================================Liri Bot==============================================
@@ -11,7 +11,7 @@ inquirer.prompt([
     type: "list",
     name: "selection",
     message: "Hiya! I'm LiriBot. What do you want to see?",
-    choices: ["My Tweets", "Info of a Song", "Something Else", ] 
+    choices: ["My Tweets", "A Song", "Something Else",] 
   }
 
 ]).then(function(user) {
@@ -20,8 +20,12 @@ inquirer.prompt([
        myTweets();
   }
 
+  else if (user.selection == "A Song"){
+      spotifyThisSong();
+  }
+
   else{
-        console.log("this works 2222");
+      console.log(":D I don't know what I'm doing.");
   }
 
 
@@ -46,7 +50,7 @@ function myTweets(){
   var params = {screen_name: 'yana_y908'};
   client.get('statuses/user_timeline', params, function(error, tweets, response){
     if (!error) {
-      for (var i=0; i<tweets.length && i < 5; i++) {
+      for (var i=0; i<tweets.length && i < 20; i++) {
           console.log("----------------------------------");
           console.log(tweets[i].text);
         }console.log("-----------------------------------");
@@ -56,22 +60,24 @@ function myTweets(){
 
 
 //=================================================SPOTIFY================================================================ 
-/*function spotifyThisSong(){
+function spotifyThisSong(){
   var spotify = require('spotify');
    
   spotify.search({ type: 'track', query: 'I Want it That Way' }, function(err, data) {
       if ( err ) {
           console.log('Error occurred: ' + err);
           return;
-      }j
-   
-   console.log(data);
-      // Do something with 'data' 
+      }else{
+           console.log("Artist:" + data.tracks.items[0].artists[0].name);
+           console.log("Song Name:" + data.tracks.items[0].name);
+           console.log("Link:" + data.tracks.items[0].preview_url);
+           console.log("Album:" + data.tracks.items[0].album.name);
+           }
   });
 }
 
-spotifyThisSong();
-*/
+
+
 
 //===============================================DO WHAT IT SAYS========================================================== 
 
